@@ -5,11 +5,13 @@ from sklearn import utils
 import numpy
 
 twm = pd.read_csv('twm_report.csv')
+#Read the csv file
 X = twm.drop(columns=['shelf price', 'retailer','metro area','store address','store city','store state','manufacturer name','brand name','product description','product size description','container type','product category','product subcategory','product type',"product barcodes/plu's",'timestamp','sale price','sale start date','sale end date','sale type','sale price per one'])
+#Drop all the columns that are not non numerical as this is my input for my data set
 y = twm['shelf price']
-lab_enc = preprocessing.LabelEncoder()
-encoded = lab_enc.fit_transform(y)
+#This is my output of my data set
 
 model = DecisionTreeClassifier()
+#The perdiction model/Algorim that I am using from Sklearn
 model.fit(X, y)
-twm
+#Training the model with the input and output data sets
