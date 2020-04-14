@@ -1,0 +1,15 @@
+import pandas as pd
+from sklearn.tree import DecisionTreeClassifier
+from sklearn import preprocessing
+from sklearn import utils
+import numpy
+
+twm = pd.read_csv('twm_report.csv')
+X = twm.drop(columns=['shelf price', 'retailer','metro area','store address','store city','store state','manufacturer name','brand name','product description','product size description','container type','product category','product subcategory','product type',"product barcodes/plu's",'timestamp','sale price','sale start date','sale end date','sale type','sale price per one'])
+y = twm['shelf price']
+lab_enc = preprocessing.LabelEncoder()
+encoded = lab_enc.fit_transform(y)
+
+model = DecisionTreeClassifier()
+model.fit(X, y)
+twm
